@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<style type="text/css">
+    body {
+        margin: 50px 30%;
+    }
+</style>
+
+<body>
+    {% for event in events %}
+    <div class="card mb-4">
+        <div class="card-header">
+            Событие №{{event.id}}
+        </div>
+        <div class="card-body">
+            <p class="card-text"><b>Начало события</b> - {{event.start_date}}</p>
+
+            <p class="card-text">
+                <b>Окончание события</b> -
+                {% if event.finish_date %}
+                    {{event.finish_date}}
+                {% else %}
+                    Событие не завершено
+                {% endif %}
+            </p>
+
+            <p class="cart-text"><b>Описание</b> - {{event.description}}</p>
+
+            <p class="cart-text"><b>Приритет</b> - {{event.impact.priority}}</p>
+
+            <p class="cart-text"><b>Кол-во затронутых услуг</b> - {{event.impact.affected_services_count}}</p>
+
+        </div>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
